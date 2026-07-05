@@ -19,7 +19,7 @@
 
 Our repository follows a production-grade, modular structure aligned with Google's framework benchmarks:
 
-```text
+&#96;&#96;&#96;text
 AuraStory-Agent/
 ├── 📄 app.py               # Main Orchestrator & Polished Streamlit Chat Interface
 ├── 📄 agent.py             # Console-based Testing Harness for Raw Model Validation
@@ -29,7 +29,7 @@ AuraStory-Agent/
     └── 📂 skills/
         └── 📂 story-craft/
             └── 📄 SKILL.md # System Core Prompts & Fine-Tuned Safety Policies
-
+&#96;&#96;&#96;
 
 ---
 
@@ -38,16 +38,13 @@ AuraStory-Agent/
 Follow these simplified steps to spinning up the entire infrastructure locally on your machine:
 
 ### 1️⃣ Clone & Navigate
-
-```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+&#96;&#96;&#96;bash
+git clone https://github.com/mawaddahAlharthi/AuraStory-Agent.git
 cd AuraStory-Agent
-
-```
+&#96;&#96;&#96;
 
 ### 2️⃣ Environment Setup
-
-```powershell
+&#96;&#96;&#96;powershell
 # Initialize virtual system
 python -m venv venv
 
@@ -56,51 +53,36 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 # Activate the venv
 .\venv\Scripts\Activate
-
-```
+&#96;&#96;&#96;
 
 ### 3️⃣ Pull Dependencies
-
-```powershell
+&#96;&#96;&#96;powershell
 pip install google-genai streamlit python-dotenv mcp
-
-```
+&#96;&#96;&#96;
 
 ### 4️⃣ Inject Secure API Key
-
 Create a `.env` file in the root folder and add your key:
-
-```env
+&#96;&#96;&#96;env
 GEMINI_API_KEY=your_actual_gemini_key_here
-
-```
+&#96;&#96;&#96;
 
 ### 5️⃣ Launch the Web Application! 🚀
-
-```powershell
+&#96;&#96;&#96;powershell
 streamlit run app.py
-
-```
+&#96;&#96;&#96;
 
 ---
 
 ## 🛠️ Deep Diagnostics (MCP Inspector)
-
 To thoroughly validate the model's structural tool binding registry without spawning the full user interface:
-
-```powershell
+&#96;&#96;&#96;powershell
 npx @modelcontextprotocol/inspector python mcp_server.py
-
-```
-
+&#96;&#96;&#96;
 *Navigate to `http://localhost:3000` inside your browser and tap **Connect** to audit core skill execution logs.*
 
 ---
 
 ## 🎚️ Model Hyperparameters & Safety Core
-
 * **Core Model:** `gemini-2.5-flash`
 * **Temperature:** `0.7` *(Optimized for rich story descriptive narratives while locking out content drift or hallucination rules)*
 * **Zero-Trust Boundaries:** Dynamic split token tracking ensures the prompt loops freeze intentionally for child feedback before proceeding to a definitive happy conclusion.
-
-```
