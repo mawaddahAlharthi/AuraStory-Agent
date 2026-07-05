@@ -32,7 +32,7 @@ AuraStory-Agent/
 &#96;&#96;&#96;
 
 ---
-
+---
 ## 📦 Local Activation & Play Guide
 
 Follow these simplified steps to spinning up the entire infrastructure locally on your machine:
