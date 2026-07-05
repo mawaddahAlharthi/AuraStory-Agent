@@ -48,7 +48,7 @@ Follow these simplified steps to spin up the entire infrastructure locally on yo
 ### 1️⃣ Clone & Navigate
 
 ```bash
-git clone <[YOUR_GITHUB_REPOSITORY_URL](https://github.com/mawaddahAlharthi/AuraStory-Agent)>
+git clone <https://github.com/mawaddahAlharthi/AuraStory-Agent>
 cd AuraStory-Agent
 ```
 
