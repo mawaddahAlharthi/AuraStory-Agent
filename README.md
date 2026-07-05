@@ -44,7 +44,7 @@ cd AuraStory-Agent
 &#96;&#96;&#96;
 
 ### 2️⃣ Environment Setup
-&#96;&#96;&#96;powershell
+&#96;&#96;&#96;
 # Initialize virtual system
 python -m venv venv
 
@@ -56,7 +56,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 &#96;&#96;&#96;
 
 ### 3️⃣ Pull Dependencies
-&#96;&#96;&#96;powershell
+&#96;&#96;&#96;
 pip install google-genai streamlit python-dotenv mcp
 &#96;&#96;&#96;
 
@@ -67,7 +67,7 @@ GEMINI_API_KEY=your_actual_gemini_key_here
 &#96;&#96;&#96;
 
 ### 5️⃣ Launch the Web Application! 🚀
-&#96;&#96;&#96;powershell
+&#96;&#96;&#96;
 streamlit run app.py
 &#96;&#96;&#96;
 
@@ -75,7 +75,7 @@ streamlit run app.py
 
 ## 🛠️ Deep Diagnostics (MCP Inspector)
 To thoroughly validate the model's structural tool binding registry without spawning the full user interface:
-&#96;&#96;&#96;powershell
+&#96;&#96;&#96;
 npx @modelcontextprotocol/inspector python mcp_server.py
 &#96;&#96;&#96;
 *Navigate to `http://localhost:3000` inside your browser and tap **Connect** to audit core skill execution logs.*
