@@ -19,7 +19,7 @@
 
 Our repository follows a production-grade, modular structure aligned with Google's framework benchmarks:
 
-
+```text
 AuraStory-Agent/
 ├── 📄 app.py               # Main Orchestrator & Polished Streamlit Chat Interface
 ├── 📄 agent.py             # Console-based Testing Harness for Raw Model Validation
@@ -29,6 +29,9 @@ AuraStory-Agent/
     └── 📂 skills/
         └── 📂 story-craft/
             └── 📄 SKILL.md # System Core Prompts & Fine-Tuned Safety Policies
+
+---
+
 📦 Local Activation & Play Guide
 Follow these simplified steps to spinning up the entire infrastructure locally on your machine:
 
