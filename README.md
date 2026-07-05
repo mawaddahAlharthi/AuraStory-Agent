@@ -113,6 +113,4 @@ Navigate to `http://localhost:3000` in your browser and click **Connect** to aud
 
 Contributions, issues, and feature requests are welcome. Feel free to open an issue or submit a pull request.
 
-## 📄 License
 
-This project is released for the 2026 Kaggle Capstone Event. Add your preferred license here (e.g., MIT).
