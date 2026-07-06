@@ -6,19 +6,16 @@ from google.genai.errors import APIError
 
 load_dotenv()
 
-# إعداد الصفحة وتوسيعها لتوفير رؤية مريحة للأطفال
 st.set_page_config(page_title="AuraStory - AI Interactive Storytelling", page_icon="✨", layout="wide")
 
-# --- حقن ستايل CSS فائق الدقة (مستهدف لعناصر Streamlit بشكل مباشر ومضمون) ---
 st.markdown("""
     <style>
-    /* 1. تغيير خلفية التطبيق كاملة لتصبح متدرجة وساحرة */
     .stApp {
         background: linear-gradient(135deg, #0b0f19 0%, #1a103c 50%, #2d124d 100%) !important;
         color: #f1f5f9 !important;
     }
     
-    /* 2. تنسيق العنوان الرئيسي */
+    
     h1 {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #ffffff !important;
@@ -28,7 +25,6 @@ st.markdown("""
         font-weight: 800;
     }
     
-    /* 3. تفتيح وتكبير نص القصة ليصبح واضحاً وجذاباً للأطفال */
     .stChatMessage, .stChatMessage p, .stChatMessage span, div[data-testid="stMarkdownContainer"] p {
         color: #ffffff !important;
         font-size: 1.3rem !important;
@@ -36,7 +32,6 @@ st.markdown("""
         font-weight: 400 !important;
     }
     
-    /* 4. تحسين شكل صناديق رسائل الشات بنمط الـ Glow Glass */
     .stChatMessage {
         background-color: rgba(255, 255, 255, 0.06) !important;
         border: 1px solid rgba(168, 85, 247, 0.25) !important;
@@ -46,7 +41,6 @@ st.markdown("""
         margin-bottom: 20px !important;
     }
     
-    /* 5. تنسيق صناديق التنبيه والمعلومات الفاصلة */
     .stAlert {
         background-color: rgba(99, 102, 241, 0.2) !important;
         border: 1px solid #6366f1 !important;
@@ -58,7 +52,6 @@ st.markdown("""
         font-weight: bold !important;
     }
     
-    /* 6. ستايل مخصص لأعمدة البطاقات الملهمة في البداية */
     div[data-testid="stColumn"] {
         background: rgba(255, 255, 255, 0.04) !important;
         border: 1px solid rgba(168, 85, 247, 0.15) !important;
@@ -72,7 +65,6 @@ st.markdown("""
         box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4) !important;
     }
     
-    /* 7. 🔴 التعديل الجذري والأكيد للأزرار: استهداف شامل يمنع اللون الأبيض تماماً 🔴 */
     div.stButton > button {
         background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%) !important;
         color: #ffffff !important;
@@ -96,12 +88,10 @@ st.markdown("""
         border: none !important;
     }
 
-    /* ضمان تلوين أزرار الخيارات السفلية بخلفيات مميزة دون تداخل */
     div.stButton > button[key*="opt_a"] { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%) !important; }
     div.stButton > button[key*="opt_b"] { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%) !important; }
     div.stButton > button[key*="opt_c"] { background: linear-gradient(135deg, #831843 0%, #ec4899 100%) !important; }
     
-    /* 8. تخصيص حقول الإدخال النصية (خلفية بيضاء، خط داكن عريض وواضح جداً) */
     .stTextInput > div > div > input {
         background-color: #ffffff !important;
         color: #0b0f19 !important;
@@ -160,7 +150,6 @@ def display_formatted_message(role, text):
             parts = text.split("[SPLIT]")
             st.markdown(parts[0])  
             
-            # معالجة ذكية وديناميكية لاستخراج الخيارات لتجنب أي IndexError
             extracted_opts = [p.strip("* \n") for p in parts[1:] if p.strip()]
             if not st.session_state.ch2_generated and len(extracted_opts) >= 3:
                 st.session_state.options = extracted_opts[:3]
@@ -170,7 +159,6 @@ def display_formatted_message(role, text):
 for message in st.session_state.messages:
     display_formatted_message(message["role"], message["content"])
 
-# --- المرحلة 1: بداية المغامرة وعرض البطاقات الملهمة ---
 if not st.session_state.story_started:
     st.markdown("### 🌌 Create New Story")
     
@@ -220,14 +208,12 @@ if not st.session_state.story_started:
             except APIError as e:
                 st.error("⚠️ **The Magic Wand is currently resting due to high demand!** Please wait a few seconds and click again. ✨")
 
-# --- المرحلة 2: خيارات الطفل عبر بطاقات عريضة ملونة بالكامل وبدون أي فراغات بيضاء ---
 elif st.session_state.ch1_generated and not st.session_state.ch2_generated:
     st.write("<br><h3>🌟 Make Your Choice, Little Adventurer:</h3>", unsafe_allow_html=True)
     st.info("👇 **Click on the path description below that you want to follow:**")
     
     child_choice = None
     
-    # استخدام الصيغة المحدثة والمثبتة للـ CSS المستهدف لتظهر الأزرار كبطاقات ملونة عريضة فوراً
     if st.button(f"🪐 {st.session_state.options[0]}", key="opt_a"):
         child_choice = "A"
     if st.button(f"🔮 {st.session_state.options[1]}", key="opt_b"):
@@ -248,7 +234,6 @@ elif st.session_state.ch1_generated and not st.session_state.ch2_generated:
             except APIError as e:
                 st.error("⚠️ **The Magic Stars are a bit crowded right now!** Please click your choice button again. 🌟")
 
-# --- المرحلة 3: الخاتمة وإعادة التشغيل مع البالونات ---
 elif st.session_state.ch2_generated:
     st.write("<br>", unsafe_allow_html=True)
     st.balloons()
