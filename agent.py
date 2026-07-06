@@ -46,17 +46,15 @@ async def run_story_agent():
 
     model_id = "gemini-2.5-flash"
     
-    # إعداد الجلسة مع تثبيت الـ Temperature المبدع
     chat = client.chats.create(
         model=model_id,
         config={
             "system_instruction": system_instruction,
             "tools": [save_story_chapter, simulate_image_generation],
-            "temperature": 0.8  # إعادة الإبداع والتفصيل
+            "temperature": 0.8  
         }
     )
 
-    # --- الشابتر 1 ---
     print("🤖 Agent is crafting Chapter 1...\n")
     prompt_ch1 = f"Let's start a beautifully detailed adventure based on this theme: {story_idea}. Generate ONLY Chapter 1 now, followed by Option A, B, and C."
     response_ch1 = chat.send_message(prompt_ch1)
@@ -65,10 +63,8 @@ async def run_story_agent():
     print(response_ch1.text)
     print("--------------------------------------------------\n")
 
-    # انتظار خيار الطفل بشكل إجباري
     child_choice = input("≫ Type your choice for the next chapter (A, B, or C): ")
     
-    # --- الشابتر 2 (الخاتمة) ---
     print(f"\n🤖 Agent is crafting the final conclusion based on Option {child_choice.upper()}...\n")
     prompt_ch2 = f"The child chose option {child_choice.upper()}. Now, write the final chapter (Chapter 2) as a rich, satisfying, and happy conclusion to the story. Wrap up everything beautifully and do NOT provide any options at the end."
     response_ch2 = chat.send_message(prompt_ch2)
